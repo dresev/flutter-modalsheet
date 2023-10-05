@@ -9,43 +9,61 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: Container(
+        alignment: Alignment.center,
         child: TextButton(
-            onPressed: () {
-              showModalBottomSheet(
-                isScrollControlled: true,
-                backgroundColor: Colors.white,
-                elevation: 0,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                ),
-                context: context,
-                builder: (context) => Container(
-                  // height: MediaQuery.of(context).size.height / 2,
-                  padding: MediaQuery.of(context).viewInsets,
-                  decoration: const BoxDecoration(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(20)),
-                  ),
-                  child: Column(
-                    children: [
-                      const GetDataModalSheet(
-                        title: 'title',
-                        data: '3424',
-                        subtitle: 'subtitle',
-                      ),
-                      SetDataModalSheet(
-                        title: 'Altura',
-                        onPressed: () {},
-                        textEditingController: textEditingController,
-                        keyboardType: TextInputType.number,
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-            child: Text('data', style: Theme.of(context).textTheme.bodyMedium)),
+          onPressed: () => addDataBottomSheet(context),
+          child: Text(
+            'data',
+            style: Theme.of(context).textTheme.labelMedium,
+          ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.only(bottom: 1.h),
+        decoration: const BoxDecoration(
+          color: Colors.indigo,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        height: 9.6.h,
+        child: TextButton(
+          onPressed: () => addDataBottomSheet(context),
+          child: const Text('data',
+              style: TextStyle(color: Colors.white, fontSize: 13)),
+        ),
+      ),
+    );
+  }
+
+  Future<dynamic> addDataBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      elevation: 0,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+      ),
+      context: context,
+      builder: (context) => Container(
+        padding: MediaQuery.of(context).viewInsets,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        child: Column(
+          children: [
+            const GetDataModalSheet(
+              title: 'title',
+              data: '3424',
+              subtitle: 'subtitle',
+            ),
+            SetDataModalSheet(
+              title: 'Altura',
+              onPressed: () {},
+              textEditingController: textEditingController,
+              keyboardType: TextInputType.number,
+            ),
+          ],
+        ),
       ),
     );
   }

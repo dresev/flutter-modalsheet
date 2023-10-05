@@ -48,10 +48,17 @@ class MyApp extends StatelessWidget {
             labelLarge: TextStyle(
               fontSize: 17.sp,
               color: const Color(0xFFC8D7E6),
+              letterSpacing: 0,
+            ),
+            labelMedium: TextStyle(
+              fontSize: 11.sp,
+              color: const Color(0xFF6D8CAB),
+              letterSpacing: 0,
             ),
             labelSmall: TextStyle(
               fontSize: 8.sp,
               color: const Color(0xFF6D8CAB),
+              letterSpacing: 0,
             ),
           ),
         ),
